@@ -1,0 +1,22 @@
+@mixin reverse-color($c) {
+  color: $c;
+  border: 2px solid $c;
+  transition: 0.5s;
+    &:hover {
+      color: #fff;
+      background-color: $c;
+    }
+}
+
+$mq-breakpoints: (
+  'sm': 635px,
+  'md': 810px,
+  'lg': 930px,
+) !default;
+
+@mixin mq($breakpoint, $rule) {
+  $breakpoint: map-get($mq-breakpoints, $breakpoint);
+  @media screen and (#{$rule}-width: $breakpoint) {
+    @content;
+  }
+}
